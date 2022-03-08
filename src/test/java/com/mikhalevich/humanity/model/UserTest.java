@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import com.mikhalevich.humanity.model.Sex;
 import com.mikhalevich.humanity.model.User;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -17,13 +18,24 @@ public class UserTest {
     /**
      * Rigorous Test :-)
      */
+    private User user;
+    private User user1;
+    private User user2;
+
+    /**
+     * Аннотация @Before указывает на то,
+     * что метод будет выполнятся перед каждым тестируемым методом @Test.
+     */
+    @Before
+    public void setUp() throws Exception {
+        user = new User("Евгений", 35, Sex.MALE);
+        user1 = new User("Марина", 34, Sex.FEMALE);
+        user2 = new User("Алина", 7, Sex.FEMALE);
+    }
+
     @Test
     public void getAllUsers() {
         //GIVEN
-        //создаем тестовые данные
-        User user = new User("Евгений", 35, Sex.MALE);
-        User user1 = new User("Марина", 34, Sex.FEMALE);
-        User user2 = new User("Алина", 7, Sex.FEMALE);
 
         //создаем список expected и заполняем его данными нашего метода
         List<User> expected = User.getAllUsers();
@@ -44,10 +56,6 @@ public class UserTest {
 
     @Test
     public void getAllDifferentUsers() {
-        //создаем тестовые данные
-        User user = new User("Евгений", 35, Sex.MALE);
-        User user1 = new User("Марина", 34, Sex.FEMALE);
-        User user2 = new User("Алина", 7, Sex.FEMALE);
 
         //создаем список expected и заполняем его данными нашего метода
         List<User> expected = User.getAllUsers();
@@ -61,7 +69,7 @@ public class UserTest {
 
         //запускаем тест, в случае если список expected и actual не будут равны
         //тест будет провален, о результатах теста читаем в консоли
-        Assert.assertEquals(expected, actual);
+        Assert.assertNotEquals(expected, actual);
     }
 
     /**
@@ -77,9 +85,6 @@ public class UserTest {
 
     @Test
     public void getAllUsers_MALE() {
-        User user = new User("Евгений", 35, Sex.MALE);
-        User user1 = new User("Марина", 34, Sex.FEMALE);
-        User user2 = new User("Алина", 7, Sex.FEMALE);
 
         List<User> expected = User.getAllUsers(Sex.MALE);
 
@@ -98,9 +103,6 @@ public class UserTest {
 
     @Test
     public void getAllUsers_FEMALE() {
-        User user = new User("Евгений", 35, Sex.MALE);
-        User user1 = new User("Марина", 34, Sex.FEMALE);
-        User user2 = new User("Алина", 7, Sex.FEMALE);
 
         List<User> expected = User.getAllUsers(Sex.FEMALE);
 
@@ -120,9 +122,6 @@ public class UserTest {
 
     @Test
     public void getHowManyUsers() {
-        User user = new User("Евгений", 35, Sex.MALE);
-        User user1 = new User("Марина", 34, Sex.FEMALE);
-        User user2 = new User("Алина", 7, Sex.FEMALE);
 
         int expected = User.getHowManyUsers();
 
@@ -133,9 +132,6 @@ public class UserTest {
 
     @Test
     public void getHowManyUsers_MALE() {
-        User user = new User("Евгений", 35, Sex.MALE);
-        User user1 = new User("Марина", 34, Sex.FEMALE);
-        User user2 = new User("Алина", 7, Sex.FEMALE);
 
         int expected = User.getHowManyUsers(Sex.MALE);
 
@@ -146,9 +142,6 @@ public class UserTest {
 
     @Test
     public void getHowManyUsers_FEMALE() {
-        User user = new User("Евгений", 35, Sex.MALE);
-        User user1 = new User("Марина", 34, Sex.FEMALE);
-        User user2 = new User("Алина", 7, Sex.FEMALE);
 
         int expected = User.getHowManyUsers(Sex.FEMALE);
 
@@ -159,9 +152,6 @@ public class UserTest {
 
     @Test
     public void getAllAgeUsers() {
-        User user = new User("Евгений", 35, Sex.MALE);
-        User user1 = new User("Марина", 34, Sex.FEMALE);
-        User user2 = new User("Алина", 7, Sex.FEMALE);
 
         int expected = User.getAllAgeUsers();
 
@@ -172,9 +162,6 @@ public class UserTest {
 
     @Test
     public void getAllAgeUsers_MALE() {
-        User user = new User("Евгений", 35, Sex.MALE);
-        User user1 = new User("Марина", 34, Sex.FEMALE);
-        User user2 = new User("Алина", 7, Sex.FEMALE);
 
         int expected = User.getAllAgeUsers(Sex.MALE);
 
@@ -185,9 +172,6 @@ public class UserTest {
 
     @Test
     public void getAllAgeUsers_FEMALE() {
-        User user = new User("Евгений", 35, Sex.MALE);
-        User user1 = new User("Марина", 34, Sex.FEMALE);
-        User user2 = new User("Алина", 7, Sex.FEMALE);
 
         int expected = User.getAllAgeUsers(Sex.FEMALE);
 
