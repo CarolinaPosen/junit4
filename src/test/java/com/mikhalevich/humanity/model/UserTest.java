@@ -54,7 +54,7 @@ public class UserTest {
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
+//    @Test
     public void getAllDifferentUsers() {
 
         //создаем список expected и заполняем его данными нашего метода
